@@ -50,5 +50,6 @@ public class HouseProvider implements FacetProvider {
                 }
             }
         }
+        region.setRegionFacet(HouseFacet.class, facet);
     }
 }
