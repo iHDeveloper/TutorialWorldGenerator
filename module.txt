@@ -5,9 +5,7 @@
     "displayName" : "TutorialWorldGenerator",
     "description" : "A simple world generator for a tutorial in Terasology",
     "dependencies" : [
-        {
-            "id": "Core"
-        }
+        { "id": "Core", "minVersion": "2.0.0" }
     ],
     "serverSideOnly" : false
 }
