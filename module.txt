@@ -4,6 +4,10 @@
     "author" : "iHDeveloper",
     "displayName" : "TutorialWorldGenerator",
     "description" : "A simple world generator for a tutorial in Terasology",
-    "dependencies" : [],
+    "dependencies" : [
+        {
+            "id": "Core"
+        }
+    ],
     "serverSideOnly" : false
 }
