@@ -1,0 +1,9 @@
+{
+    "id" : "TutorialWorldGenerator",
+    "version" : "0.1.0-SNAPSHOT",
+    "author" : "iHDeveloper",
+    "displayName" : "TutorialWorldGenerator",
+    "description" : "A simple world generator for a tutorial in Terasology",
+    "dependencies" : [],
+    "serverSideOnly" : false
+}
