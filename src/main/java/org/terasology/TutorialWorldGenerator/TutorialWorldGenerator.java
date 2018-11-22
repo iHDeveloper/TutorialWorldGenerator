@@ -34,6 +34,6 @@ public class TutorialWorldGenerator extends BaseFacetedWorldGenerator {
 
     @Override
     protected WorldBuilder createWorld() {
-        return new WorldBuilder(worldGeneratorPluginLibrary);
+        return new WorldBuilder(worldGeneratorPluginLibrary).addRasterizer(new TutorialWorldRasterizer());
     }
 }
