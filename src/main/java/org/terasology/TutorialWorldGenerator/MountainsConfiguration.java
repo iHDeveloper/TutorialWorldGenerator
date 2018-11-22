@@ -21,6 +21,6 @@ import org.terasology.rendering.nui.properties.Range;
 public class MountainsConfiguration implements Component {
 
     @Range(min = 200, max = 500f, increment = 20f, precision = 1, description = "Mountain Height")
-    private float mountainHeight = 400;
+    public float mountainHeight = 400;
 
 }

@@ -15,6 +15,7 @@
  */
 package org.terasology.TutorialWorldGenerator;
 
+import org.terasology.entitySystem.Component;
 import org.terasology.math.TeraMath;
 import org.terasology.math.geom.BaseVector2i;
 import org.terasology.math.geom.Rect2i;
@@ -30,9 +31,11 @@ import org.terasology.world.generation.Updates;
 import org.terasology.world.generation.facets.SurfaceHeightFacet;
 
 @Updates(@Facet(SurfaceHeightFacet.class))
-public class MountainsProvider implements FacetProvider {
+public class MountainsProvider implements ConfigurableFacetProvider {
 
     private Noise mountainNoise;
+
+    private MountainsConfiguration mountainsConfiguration = new MountainsConfiguration();
 
     @Override
     public void setSeed(long seed) {
@@ -42,12 +45,27 @@ public class MountainsProvider implements FacetProvider {
     @Override
     public void process(GeneratingRegion region) {
         SurfaceHeightFacet facet = region.getRegionFacet(SurfaceHeightFacet.class);
-        float mountainsHeight = 400;
+        float mountainsHeight = mountainsConfiguration.mountainHeight;
         Rect2i processRegion = facet.getWorldRegion();
         for (BaseVector2i position : processRegion.contents()) {
             float additiveMountainHeight = mountainNoise.noise(position.x(), position.y());
             additiveMountainHeight = TeraMath.clamp(additiveMountainHeight, 0, mountainsHeight);
             facet.setWorld(position, facet.getWorld(position) + additiveMountainHeight);
         }
+    }
+
+    @Override
+    public Component getConfiguration() {
+        return mountainsConfiguration;
+    }
+
+    @Override
+    public void setConfiguration(Component configuration) {
+        this.mountainsConfiguration = (MountainsConfiguration) configuration;
+    }
+
+    @Override
+    public String getConfigurationName() {
+        return "Mountains";
     }
 }
